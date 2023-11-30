@@ -7,6 +7,7 @@ public class SParentControl : ISControl
 {
     public string Name { get; init; }
     public ScalingType ScalingType { get; init; }
+    public Size Size { get; set; }
 
     private List<ISControl> ChildControls;
     

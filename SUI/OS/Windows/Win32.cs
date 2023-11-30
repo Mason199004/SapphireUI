@@ -92,6 +92,8 @@ public static class Win32
     [DllImport("gdi32.dll")]
     public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
     
+    public delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+    
     #region DeviceCap
     public enum DeviceCap
     {
@@ -259,6 +261,11 @@ public static class Win32
     }
     #endregion
 
+    public class WindowClasses
+    {
+        public const string BUTTON = "BUTTON";
+    }
+    
     public static class D2D
     {
         

@@ -7,22 +7,12 @@ namespace SUI.OS.Windows;
 
 public class WinWindow : IOSWindow
 {
-    #region Win32
-    
-    delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
-    
-    
-
-
-    private WndProc delegWndProc = HandleEvent;
-
-    
-    #endregion
-    
     public string Title { get; set; } = String.Empty;
     public int Dpi { get; set; }
     public IOSMenubar Menubar { get; set; } = new WinMenubar();
     public ISControl MainControl { get; set; }
+
+    private Win32.WndProc delegWndProc = HandleEvent;
 
     public WinWindow()
     {
