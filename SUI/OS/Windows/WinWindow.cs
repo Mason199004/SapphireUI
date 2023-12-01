@@ -63,34 +63,19 @@ public class WinWindow : IOSWindow
             }
             
             string wndClass = wind_class.lpszClassName;
-
-            IntPtr dc = Win32.GetDC(0);
-            Dpi = (int)(Win32.GetDeviceCaps(dc, (int)Win32.DeviceCap.LOGPIXELSX) * GetScalingFactor());
-            Win32.ReleaseDC(0, dc);
-            int width = 9 * Dpi;
-            int height = 6 * Dpi;
-            hWnd = Win32.CreateWindowEx(0, WinClass, Title, Win32.WS_OVERLAPPEDWINDOW | Win32.WS_VISIBLE, 0, 0, width, height, IntPtr.Zero, IntPtr.Zero, wind_class.hInstance, IntPtr.Zero);
             
+            Dpi = 96; //default to 96 until after we het the hWnd
+            
+            int width = 9 * Dpi; //replace
+            int height = 6 * Dpi;//
+            hWnd = Win32.CreateWindowEx(0, WinClass, Title, Win32.WS_OVERLAPPEDWINDOW | Win32.WS_VISIBLE, 0, 0, width, height, IntPtr.Zero, IntPtr.Zero, wind_class.hInstance, IntPtr.Zero);
+            Dpi = PlatformHelper.GetDpi(this);
         }
         
     }
-    
-    private float GetScalingFactor()
-    {
-        IntPtr desktop = Win32.GetDC(0);
-        
-        int LogicalScreenHeight = Win32.GetDeviceCaps(desktop, (int)Win32.DeviceCap.VERTRES);
-        int PhysicalScreenHeight = Win32.GetDeviceCaps(desktop, (int)Win32.DeviceCap.DESKTOPVERTRES); 
-    
-        float ScreenScalingFactor = (float)PhysicalScreenHeight / (float)LogicalScreenHeight;
-
-        Win32.ReleaseDC(0, desktop);
-        return ScreenScalingFactor; 
-    }
-
 
     private static ushort WinClass = 0;
-    private IntPtr hWnd;
+    internal IntPtr hWnd;
     public bool Spawn()
     {
         if (hWnd == ((IntPtr)0))

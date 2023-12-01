@@ -91,6 +91,9 @@ public static class Win32
     
     [DllImport("gdi32.dll")]
     public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
+
+    [DllImport("User32.dll")]
+    public static extern uint GetDpiForWindow(IntPtr hWnd);
     
     public delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
     
