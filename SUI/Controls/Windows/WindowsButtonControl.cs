@@ -67,11 +67,35 @@ public abstract class WindowsButtonControl : WindowsSpecificControl, ISButtonCon
 
     public event Action? Clicked;
 
+    /// <summary>
+    /// Handles various events for a window.
+    /// </summary>
+    /// <param name="hWnd">The handle to the window.</param>
+    /// <param name="msg">The message code for the event.</param>
+    /// <param name="wParam">The wParam parameter for the event.</param>
+    /// <param name="lParam">The lParam parameter for the event.</param>
+    /// <returns>
+    /// 
+    /// </returns>
     protected override IntPtr HandleEvent(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
     {
         switch (msg) //TODO: wm_command or something
         {
-            
+            case Win32.WM_COMMAND:
+                // Handle button click event here
+                break;
+            case Win32.WM_LBUTTONUP:
+                // Handle button release event here
+                break;
+            case Win32.WM_LBUTTONDBLCLK:
+                // Handle button double click event here
+                break;
+            case Win32.WM_PAINT:
+                // Handle button paint event here
+                break;
+            case Win32.WM_DESTROY:
+                // Handle window destroy event here
+                break;
         }
         return Win32.DefWindowProc(hWnd, msg, wParam, lParam);
     }

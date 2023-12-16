@@ -17,6 +17,7 @@ public static class Win32
     public const UInt32 WM_PAINT = 0x0f;
     public const UInt32 WM_LBUTTONUP = 0x0202;
     public const UInt32 WM_LBUTTONDBLCLK = 0x0203;
+    public const UInt32 WM_COMMAND = 0x0111;
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     public struct WNDCLASSEX

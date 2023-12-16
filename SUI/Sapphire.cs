@@ -13,7 +13,6 @@ public static class Sapphire
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            var dpi = Windows.SetProcessDPIAware();
             return Windows.CreateWindow(Title, Menubar);
         }
 
@@ -32,7 +31,7 @@ public static class Sapphire
         }
 
         internal static _OSVERSIONINFOW verinf;
-        [DllImport("NtosKrnl")]
+        [DllImport("Ntdll")]
         static extern int RtlGetVersion(ref _OSVERSIONINFOW versionInfo);
         
         enum PROCESS_DPI_AWARENESS {
