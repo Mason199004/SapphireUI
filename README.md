@@ -1,12 +1,11 @@
 # SapphireUI
 
-A WIP cross-platform native(ish) ui library written in C# using P/Invoke
+A WIP cross-platform native(ish) ui library written in C#
 
 # Platform support
 * Windows 7+
-* Linux via GTK
+* Linux
 * MacOS (Minimum version not known yet) TODO: determine minimum version of MacOS to support
 
 # Current Goals:
-* Implement all Win32 Common Controls
-* Implement equivalent on MacOS and Linux
+* Spawn windows and draw basic controls like buttons
